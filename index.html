@@ -1,11 +1,626 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>kakao clone design</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- 구글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 스크롤 도트 -->
+    <script>
+        $(function () {
+            //dot동정생성.표시
+            $('footer').before('<aside><h2 class="hide">페이지내용 바로가기</h2></aside>');
+            $('aside').append('<ul></ul>');
+            for (let n = 0; n < $('section').length + 1; n++) {
+                $('aside ul').append('<li><a href="#' + n + '">' + n + '</a></li>');
+
+            }
+            //스크롤위치에 따라 dot 표기
+            $('aside li:eq(0) a').addClass('current');
+            let scrollTop = $(window).scrollTop();
+            let sec0 = $('section:eq(0)').offset().top;
+            let sec1 = $('section:eq(1)').offset().top;
+            let sec2 = $('section:eq(2)').offset().top;
+            let sec3 = $('section:eq(3)').offset().top;
+            console.log(sec0);
+            $(window).scroll(function () {
+                scrollTop = $(window).scrollTop();
+                if (scrollTop < sec0) {
+                    $('aside li:eq(0) a').addClass('current');
+                    $('aside li:eq(0) a').parent().siblings().children('a').removeClass('current');
+                }
+                if (scrollTop >= sec0) {
+                    $('aside li:eq(1) a').addClass('current');
+                    $('aside li:eq(1) a').parent().siblings().children('a').removeClass('current');
+                } if (scrollTop >= sec1) {
+                    $('aside li:eq(2) a').addClass('current');
+                    $('aside li:eq(2) a').parent().siblings().children('a').removeClass('current');
+                } if (scrollTop >= sec2) {
+                    $('aside li:eq(3) a').addClass('current');
+                    $('aside li:eq(3) a').parent().siblings().children('a').removeClass('current');
+                } if (scrollTop >= sec3) {
+                    $('aside li:eq(4) a').addClass('current');
+                    $('aside li:eq(4) a').parent().siblings().children('a').removeClass('current');
+                }
+            });
+        });
+    </script>
+
 </head>
+
 <body>
-    
+    <!-- 헤더 -->
+    <header>
+        <nav>
+            <h1><a href="">kakao</a></h1>
+            <ul class="mainMenuBar">
+                <li class="mainMenu1"><a href="">소개</a>
+                    <ul class="subMenu1">
+                        <li><a href="">카카오 문화</a></li>
+                        <li><a href="">카카오 그룹</a></li>
+                        <li><a href="">연혁</a></li>
+                    </ul>
+                </li>
+                <li class="mainMenu2"><a href="">기술과 서비스</a>
+                    <ul class="subMenu2">
+                        <li><a href="">카카오테크</a></li>
+                        <li><a href="">기술 플랫폼</a></li>
+                        <li><a href="">기술 서비스</a></li>
+                        <li><a href="">기술 콘텐츠</a></li>
+                        <li><a href="">기술 이벤트</a></li>
+                        <li><a href="">if(kakao)</a></li>
+                    </ul>
+                    <!-- <ul class="subMenu3">
+                        <li><a href="">커뮤니케이션</a></li>
+                        <li><a href="">일상 편의</a></li>
+                        <li><a href="">비즈니스</a></li>
+                        <li><a href="">쇼핑</a></li>
+                        <li><a href="">엔터테인먼트</a></li>
+                        <li><a href="">소셜임팩트</a></li>
+                    </ul> -->
+                </li>
+                <li class="mainMenu3"><a href="">약속과 책임</a>
+                    <ul class="subMenu4">
+                        <li><a href="">ESG 보고서</a></li>
+                        <li><a href="">프로젝트 단골</a></li>
+                        <li><a href="">액티브그린</a></li>
+                        <li><a href="">디지털 책임</a></li>
+                    </ul>
+                </li>
+                <li class="mainMenu4"><a href="">소식</a>
+                    <ul class="subMenu5">
+                        <li><a href="">보도자료</a></li>
+                        <li><a href="">미디어자료</a></li>
+                    </ul>
+                    <!-- <ul class="subMenu6">
+                        <li><a href="">카카오이야기</a></li>
+                        <li><a href="">그룹사이야기</a></li>
+                    </ul> -->
+                </li>
+                <li class="mainMenu5"><a href="">투자 정보</a></li>
+            </ul>
+            <ul class="utilMenuBar">
+                <li class="utilMenu1"><a href="">검색하기</a></li>
+                <li class="utilMenu2"><a href="">언어 변경</a></li>
+                <li class="utilMenu3"><a href="">화면 모드 변경</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 비주얼 -->
+    <div class="mainVisual">
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="mask" clipPathUnits="userSpaceOnUse">
+                    <path class="st0"
+                        d="M1314,100c-19.8,0-36-16.2-36-36V36c0-19.8-16.2-36-36-36H36C16.2,0,0,16.2,0,36v638c0,19.8,16.2,36,36,36h263
+                  c19.8,0,36,16.2,36,36v26c0,19.8,16.2,36,36,36h1017c19.8,0,36-16.2,36-36V136c0-19.8-16.2-36-36-36H1314z" />
+                </clipPath>
+            </defs>
+        </svg>
+        <video src="./img/mainVisual.mp4" autoplay loop muted></video>
+        <div class="grid">
+            <h2>AI 서비스를<br>내 일상 속으로</h2>
+            <div class="a1">
+                <h4>기부에 함께 해주신<br>착한 마음들</h4>
+                <p id="number">00,000,000건</p>
+                <h3>kakao!mpact</h4>
+            </div>
+            <div class="a2">
+                <h3>다양성의 가치</h3>
+                <h4>2023 <br>카카오 다양성 보고서</h4>
+                <p>#다양성 #건강한디지털</p>
+                <!-- <h3>디지털 격차 줄이기</h3>
+                <h4>어르신을 위한 개인정보보호 안내</h4>
+                <p>#기술복지 #피싱범죄예방</p>
+                <h3>카톡설명서</h3>
+                <h4>모두의 카톡을 더 가깝고 안전하게</h4>
+                <p>#업데이트소식 #톡활용팁</p> -->
+            </div>
+            <div class="a3">
+                <h3>카카오 그룹</h3>
+                <!-- <h3>연혁</h3> -->
+            </div>
+            <a class="moreView1" href="">카카오 소식 모아보기</a>
+            <a class="moreView2" href="">자세히 알아보기</a>
+        </div>
+    </div>
+
+    <!-- 콘텐츠 -->
+    <main class="contents">
+
+        <section class="content1">
+            <h2>카카오와 카카오 그룹이 축적해 온 이야기들</h2>
+            <div class="swiper" dir="ltr">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide swiper-slide1">
+                        <div class="swiper-content">
+                            <h3>ESG</h3>
+                            <h4>왕초보 사장님들의 <br>단골 만들기 비법</h4>
+                            <h5>마켓팅이 어려웠던 사장님이 <br>매출 500% 올린 비결</h5>
+                            <p>#소상공인지원 #카카오상생활동 #카카오톡채널</p>
+                        </div>
+                        <img src="./img/swiper1.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide2">
+                        <div class="swiper-content">
+                            <h3>ESG</h3>
+                            <h4>도로 위 히어로즈</h4>
+                            <p>#카카오모빌리티 #파트너상생</p>
+                        </div>
+                        <img src="./img/swiper2.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide3">
+                        <div class="swiper-content">
+                            <h3>ESG</h3>
+                            <h4>카카오가 꿈꾸는 <br>지속가능한 미래</h4>
+                            <p>#ESG #ESG보고서 #약속과책임 #카카오</p>
+                        </div>
+                        <img src="./img/swiper3.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide4">
+                        <div class="swiper-content">
+                            <h3>서비스</h3>
+                            <h4>진화에 누구보다 <br>진심인 편</h4>
+                            <p>#조승연의탐구생활 #카카오톡 #카톡이지</p>
+                        </div>
+                        <img src="./img/swiper4.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide5">
+                        <div class="swiper-content">
+                            <h3>뚝딱뚝딱 성장기</h3>
+                            <h4>지역 정보 매체에서 <br>위치 기반 상호작용 플랫폼으로</h4>
+                            <h5>카카오맵에서 일어난 <br>24년 간의 업데이트 이야기</h5>
+                            <p>#지도플랫폼 #카카오맵 #트렌드랭킹</p>
+                        </div>
+                        <img src="./img/swiper5.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide6">
+                        <div class="swiper-content">
+                            <h3>서비스</h3>
+                            <h4>100명에게 <br>물어봤습니다</h4>
+                            <p>#로드트립 #카카오톡 #카톡이지</p>
+                        </div>
+                        <img src="./img/swiper6.png" alt="">
+                    </div>
+
+                    <div class="swiper-slide swiper-slide7">
+                        <div class="swiper-content">
+                            <h3>서비스</h3>
+                            <h4>접근성 <br>어디까지 고민해 봤나요?</h4>
+                            <p>#디지털접근성 #카카오톡 #카톡이지</p>
+                        </div>
+                        <img src="./img/swiper7.png" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="content2">
+            <h2>더 나은 세상을 만드는 카카오 서비스</h2>
+            <div class="grid">
+                <div class="a1">
+                    <h3>커뮤니케이션</h3>
+                    <div class="img">
+                        <img src="./img/2_2.png" alt="">
+                        <img src="./img/2_3.png" alt="">
+                        <img src="./img/2_4.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+                <div class="a2">
+                    <h3>비즈니스</h3>
+                    <div class="img">
+                        <img src="./img/2_5.png" alt="">
+                        <img src="./img/2_6.png" alt="">
+                        <img src="./img/2_7.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+                <div class="a3">
+                    <h3>일상편의</h3>
+                    <div class="img">
+                        <img src="./img/2_8.png" alt="">
+                        <img src="./img/2_9.png" alt="">
+                        <img src="./img/2_10.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+                <div class="a4">
+                    <h3>쇼핑</h3>
+                    <div class="img">
+                        <img src="./img/2_11.png" alt="">
+                        <img src="./img/2_12.png" alt="">
+                        <img src="./img/2_13.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+                <div class="a5">
+                    <h3>엔터테인먼트</h3>
+                    <div class="img">
+                        <img src="./img/2_14.png" alt="">
+                        <img src="./img/2_15.png" alt="">
+                        <img src="./img/2_16.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+                <div class="a6">
+                    <h3>소셜임팩트</h3>
+                    <div class="img">
+                        <img src="./img/2_17.png" alt="">
+                        <a class="add" href=""></a>
+                    </div>
+                </div>
+            </div>
+            <a class="moreView" href="">서비스 전체보기</a>
+        </section>
+
+        <section class="content3">
+            <h2>오늘의 뉴스</h2>
+            <div class="grid">
+                <div class="a large">
+                    <h3>보도자료</h3>
+                    <span>2025.03.28</span>
+                    <h4>소셜브랜드 '민들레마음'과 따뜻한 마음 전해 카카오톡 선물하기, 2년 연속 중증희귀난치질환 환아와 이벤트 진행</h4>
+                    <p>#카카오톡 선물하기 #만약약국 #민들레마음 #중증희귀난치질환환아</p>
+                    <img class="largeimg" src="./img/3_2.png" alt="">
+                </div>
+                <div class="b large">
+                    <h3>보도자료</h3>
+                    <span>2025.03.27</span>
+                    <h4>카카오, 산불피해 복구 <br>지원 모금액 50억 넘었다... <br>카카오도 10억 기부 동참</h4>
+                    <p>#카카오같이가치 #산불피해기부</p>
+                    <img class="largeimg" src="./img/3_3.png" alt="">
+                </div>
+                <div class="c large">
+                    <h3>보도자료</h3>
+                    <span>2025.03.26</span>
+                    <h4>카카오, 제30기 <br>정기주총 개최... <br>함춘승 이사회 의장 선임</h4>
+                    <p>#정기주주총회 #주주총회 #주총 #사내이사 #사외이사</p>
+                    <img class="largeimg" src="./img/3_4.png" alt="">
+                </div>
+
+                <div class="d medium">
+                    <h3>보도자료</h3>
+                    <span>2025.03.24</span>
+                    <h4>카카오임팩트, 테크포임팩트 LAB 성과공유회서 7개 사회 혁신 기술 공개</h4>
+                </div>
+                <div class="e medium">
+                    <h3>보도자료</h3>
+                    <span>2025.03.24</span>
+                    <h4>카카오, 포털 다음(Daum) 뉴스에 '지역' 카테고리 49개 언론사 신규 입점</h4>
+                </div>
+                <a class="moreView1" href="">보도자료</a>
+                <a class="moreView2" href="">미디어자료</a>
+            </div>
+        </section>
+
+        <section class="content4">
+            <h2>약속과 책임</h2>
+            <div class="all">
+                <div class="a">
+                    <img class="svg" src="./img/svg/polygon2.svg" />
+                    <img class="img" src="./img/4_1.gif" />
+                    <h3 class="esg">ESG</h3>
+                    <h4 class="esg2">모두의 지속가능한 미래를 위한<br>카카오의 약속과 책임</h4>
+                    <a class="go" href="">go</a>
+                </div>
+
+                <div class="a">
+                    <img class="svg" src="./img/svg/polygon3.svg" />
+                    <img class="img" src="./img/4_2.gif" />
+                    <h3 class="green">액티브그린</h3>
+                    <h4 class="green2">카카오를 이용하는 만큼 우리들의<br>지구도 더 풍요로울 수 있도록</h4>
+                    <a class="go2" href="">go</a>
+                </div>
+
+                <div class="a">
+                    <img class="svg" src="./img/svg/polygon4.svg" />
+                    <img class="img" src="./img/4_3.gif" />
+                    <h3 class="magazine">정책매거진</h3>
+                    <h4 class="magazine2">기술과 사람이 함께 만드는 건강한<br>디지털 문화를 고민합니다</h4>
+                    <a class="go3" href="">go</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content5">
+            <h2>무엇을 도와드릴까요?</h2>
+            <div class="grid">
+                <div class="a">
+                    <h3>카카오 고객센터</h3>
+                    <a href="">바로가기</a>
+                    <img class="px100" src="./img/5_2.webp" alt="">
+                </div>
+                <div class="b">
+                    <h3>다음 고객센터</h3>
+                    <a href="">바로가기</a>
+                    <img class="px100" src="./img/5_3.webp" alt="">
+                </div>
+                <div class="c">
+                    <h3>커머스 고객센터</h3>
+                    <a href="">바로가기</a>
+                    <img class="px100" src="./img/5_4.webp" alt="">
+                </div>
+                <div class="d">
+                    <h3>카카오의 다양한 소식을 구독하세요!</h3>
+                    <a href="">공식 소셜 미디어 바로가기</a>
+                    <div class="dimg">
+                        <img class="px80" src="./img/5_6.png" alt="">
+                        <img class="px80" src="./img/5_7.png" alt="">
+                        <img class="px80" src="./img/5_8.png" alt="">
+                        <img class="px80" src="./img/5_9.png" alt="">
+                        <img class="px80" src="./img/5_10.png" alt="">
+                        <img class="percent50" src="./img/5_5.png" alt="">
+                    </div>
+                </div>
+                <div class="e">
+                    <div class="ee">
+                        <h3>세상만사에 관심이 많다면, <br>당신은 이미 카카오 크루</h3>
+                        <a href="">영입소식</a>
+                    </div>
+                    <img class="percent100" src="./img/5_11.png" alt="">
+                </div>
+                <div class="f">
+                    <h3>투자정보</h3>
+                    <a href="">바로가기</a>
+                    <img class="fg" src="./img/5_12.png" alt="">
+                </div>
+                <div class="g">
+                    <h3>데이터의 연결과 보호의 균형을 위한 카카오의 노력</h3>
+                    <a href="">바로가기</a>
+                    <img class="fg" src="./img/5_13.png" alt="">
+                </div>
+            </div>
+            <a class="moreView" href="">카카오 소식 모아보기</a>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="flex">
+            <h2>오늘의 카카오</h2>
+            <div class="a">
+                <ul class="fg1">
+                    <li><a href="">카카오톡 공식 다운로드</a></li>
+                    <li><a href="">카카오톡백업</a></li>
+                    <li><a href="">#카카오 이모티콘샵</a></li>
+                    <li><a href="">#카카오맵</a></li>
+                    <li><a href="">#지속가능성</a></li>
+                    <li><a href="">#개발자도구</a></li>
+                </ul>
+
+                <div>
+                    <h3 class="h3">카카오 그룹의 서비스</h3>
+                    <ul class="fg2">
+                        <li><a href="">커뮤니케이션</a></li>
+                        <li><a href="">일상편의</a></li>
+                        <li><a href="">비즈니스</a></li>
+                        <li><a href="">쇼핑</a></li>
+                        <li><a href="">엔터테인먼트</a></li>
+                        <li><a href="">임팩트</a></li>
+                    </ul>
+                </div>
+
+                <div class="scroll">
+                    <h3 class="h3">카카오 그룹</h3>
+                    <ul class="fg3">
+                        <li><a href="">카카오</a></li>
+                        <li><a href="">카카오페이</a></li>
+                        <li><a href="">카카오뱅크</a></li>
+                        <li><a href="">카카오모빌리티</a></li>
+                        <li><a href="">카카오스타일</a></li>
+                        <li><a href="">카카오엔터테인먼트</a></li>
+                        <li><a href="">카카오게임즈</a></li>
+                        <li><a href="">카카오픽코마</a></li>
+                        <li><a href="">카카오엔터프라이즈</a></li>
+                        <li><a href="">카카오헬스케어</a></li>
+                        <li><a href="">카카오벤처스</a></li>
+                        <li><a href="">카카오인베스트먼트</a></li>
+                        <li><a href="">링키지랩</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="h3">IR</h3>
+                    <ul class="fg4">
+                        <li><a href="">기업지배구조</a></li>
+                        <li><a href="">주가정보</a></li>
+                        <li><a href="">재무정보</a></li>
+                        <li><a href="">IR행사</a></li>
+                        <li><a href="">공시정보</a></li>
+                        <li><a href="">공고</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="h3">계정및지원</h3>
+                    <ul class="fg5">
+                        <li><a href="">카카오계정</a></li>
+                        <li><a href="">카카오 프라이버시</a></li>
+                        <li><a href="">카카오 고객센터</a></li>
+                        <li><a href="">다음 고객센터</a></li>
+                        <li><a href="">커머스 고객센터</a></li>
+                        <li><a href="">인재영입</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="b">
+                <li>
+                    <a href="">이용약관
+                        <ul class="inmenu">
+                            <li><a href="">카카오계정 서비스 </a></li>
+                            <li><a href="">카카오 서비스</a></li>
+                            <li><a href="">Daum 서비스</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="">위치정보 이용약관
+                        <ul class="inmenu">
+                            <li><a href="">카카오 서비스</a></li>
+                            <li><a href="">Daum 서비스</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="">개인정보처리방침
+                        <ul class="inmenu">
+                            <li><a href="">기업사이트</a></li>
+                            <li><a href="">카카오 서비스</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="">운영정책 및 제안
+                        <ul class="inmenu">
+                            <li><a href="">운영정책</a></li>
+                            <li><a href="">안전보건제안</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="">청소년보호정책
+                        <ul class="inmenu">
+                            <li><a href="">카카오 서비스</a></li>
+                            <li><a href="">Daum 서비스</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li><a href="">접근성 안내</a></li>
+                <li><a href="">브랜드보호정책</a></li>
+                <li><a href="">권리침해신고안내</a></li>
+                <li>
+                    <a href="">공지사항
+                        <ul class="inmenu">
+                            <li><a href="">투자정보 공지</a></li>
+                            <li><a href="">카카오 서비스</a></li>
+                            <li><a href="">Daum 서비스</a></li>
+                        </ul>
+                    </a>
+                </li>
+                <li><a href="">사이버윤리실</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li class="site">
+                    <a href="">관련사이트
+                        <ul class="inmenu2">
+                            <li><a href="">카카오 프라이버시</a></li>
+                            <li><a href="">카카오 디벨로퍼스</a></li>
+                            <li><a href="">다음 포털 사이트</a></li>
+                            <li><a href="">동반 성장 사이트</a></li>
+                            <li><a href="">제주 with kakao</a></li>
+                        </ul>
+                    </a>
+                </li>
+
+            </ul>
+            <p class="fin">© Kakao Corp.All rights reserved. </p>
+        </div>
+    </footer>
+
+    <!-- 스크립트 -->
+    <script src="script.js"></script>
+
+    <!-- 클릭 제이쿼리 -->
+    <script>
+        $(document).ready(function () {
+            $(".mainMenuBar > li ul").hide();
+
+            $(".mainMenuBar > li").hover(
+                function () {
+                    $(this).children("ul").stop().show().animate({ top: '90px', opacity: 1 }, 300);
+                },
+                function () {
+                    $(this).children("ul").stop().animate({ top: '90px', opacity: 0 }, 300, function () {
+                        $(this).hide();
+                    });
+                }
+            );
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            const targetNumber = 66655150; // 목표 숫자
+            const duration = 2000; // 애니메이션 시간 (2초)
+
+            $('#number').prop('number', 0).animate({
+                number: targetNumber
+            }, {
+                duration: duration,
+                step: function (now) {
+                    $(this).text(Math.floor(now).toLocaleString() + '건');
+                },
+                easing: 'linear' // 부드럽게 애니메이션
+            });
+        });
+    </script>
+    <!-- top 버튼 -->
+    <button id="topBtn">&#9650; <br>TOP</button>
+    <script>
+        $(document).ready(function () {
+            // 스크롤 내리면 버튼 보이게 해줘
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#topBtn').fadeIn();
+                } else {
+                    $('#topBtn').fadeOut();
+                }
+            });
+
+            // 버튼 누르면 맨 위로 올라가!
+            $('#topBtn').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 500);
+                return false;
+            });
+        });
+
+    </script>
 </body>
+
 </html>
